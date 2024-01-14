@@ -4,9 +4,13 @@
   "description": "",
   "main": "server.js",
   "npm": "server.js",
+  "type": "module",
+  "proxy": "http://localhost:5000",
   "scripts": {
-    "start": "node server.js",
-    "watch": "nodemon",
+    "start": "node backend/server.js",
+    "server": "nodemon backend/server.js",
+    "client": "npm run dev --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\" ",
     "seed": "node seeders/seed.js"
   },
   "keywords": [],
@@ -14,6 +18,7 @@
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.0",
+    "concurrently": "^8.2.2",
     "express": "^4.17.2",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^7.0.2"
