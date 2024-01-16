@@ -1,4 +1,4 @@
-const { User } = require('../models');
+const User = require('../models');
 const db = require('../config/connection');
 
 module.exports = async (modelName, collectionName) => {

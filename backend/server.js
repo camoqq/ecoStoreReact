@@ -1,10 +1,14 @@
-import express from "express";
+const express = require('express');
+const db = require('./config/connection');
 
-const port = 5000;
+const PORT = 3001;
 const app = express();
 
-app.get("/", (req, res) => {
-  res.send("index page");
-});
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
-app.listen(port, () => console.log("running on 5000"));
+db.once('open', () => {
+  app.listen(PORT, () => {
+    console.log(`running on port ${PORT}!`);
+  });
+});

@@ -1,8 +1,8 @@
-const db = require('../config/connection.js');
-const { User, Product, Order } = require('../models/index.js');
-const userSeeds = require('./userSeeds.json');
-const productSeeds = require('./productSeeds.json');
-const orderSeeds = require ('./orderSeeds.json');
+const db = require ('../config/connection.js');
+const { Order, Product, User } = require ('../models/index.js');
+const userSeeds = require('./userSeed.json');
+const productSeeds = require('./productSeed.json');
+const orderSeeds = require ('./orderSeed.json');
 const cleanDB = require('./cleanDB.js');
 
 db.once('open', async () => {
@@ -12,7 +12,7 @@ db.once('open', async () => {
 
   await User.create(userSeeds);
   await Product.create(productSeeds);
-  await orderSeeds.create(orderSeeds);
+  await Order.create(orderSeeds);
 
     console.log('All done!');
   } catch (error) {
